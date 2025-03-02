@@ -11,12 +11,7 @@ class DataBrandsApi {
   /// HTTP Code 200: List of Social Brands
   /// https://indexcodex.com/api/v1/socials
   Future<Data> getData() async {
-    final baseUri = Uri.parse(apiClient.baseUrl);
-    final uri = baseUri.replace(
-      path: '${baseUri.path}',
-    );
-
-    return await apiClient.dio.getUri(uri).then((response) {
+    return await apiClient.dio.get('/socials').then((response) {
       final list = List<SocialBrandModel>.from(
           response.data.map((x) => SocialBrandModel.fromJson(x)));
       return Data(brands: list);

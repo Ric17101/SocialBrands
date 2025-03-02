@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:socials_app_flutter/pages/social_brand_details/social_brand_details.dart';
 import 'package:socials_app_flutter/pages/social_brand_item_widget.dart';
 import 'package:socials_app_flutter/pages/user_appbar_widget.dart';
 import 'package:socials_app_flutter/state/models/async_result.dart';
 import 'package:socials_app_flutter/state/models/social_brand_item_ui.dart';
+import 'package:socials_app_flutter/state/models/user_detail_ui.dart';
 
 class BrandsOverview extends StatefulWidget {
   const BrandsOverview({
     required this.brandItemUiList,
+    required this.onNavigateToSocialBrandDetailsPage,
+    required this.onLogout,
     super.key,
+    required this.user,
   });
 
   final AsyncResult<List<SocialBrandItemUi>> brandItemUiList;
+  final AsyncResult<UserDetailUi> user;
+  final Function(SocialBrandItemUi itemUi) onNavigateToSocialBrandDetailsPage;
+  final VoidCallback onLogout;
 
   @override
   State<BrandsOverview> createState() => _BrandsOverviewState();
@@ -29,13 +35,7 @@ class _BrandsOverviewState extends State<BrandsOverview> {
               ?.map((brandItem) => SocialBrandItemWidget(
                     thumbnail: brandItem.iconUrl,
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              SocialBrandDetails(itemUi: brandItem),
-                        ),
-                      );
+                      widget.onNavigateToSocialBrandDetailsPage(brandItem);
                     },
                   ))
               .toList() ??
@@ -48,15 +48,41 @@ class _BrandsOverviewState extends State<BrandsOverview> {
       orElse: () => List.empty(),
     );
 
+    final userName = widget.user.maybeWhen(
+      success: (user) => user?.userName ?? '',
+      orElse: () => '',
+    );
+    final userId = widget.user.maybeWhen(
+      success: (user) => user?.userId ?? '',
+      orElse: () => '',
+    );
+    final profilePicture = widget.user.maybeWhen(
+      success: (user) => user?.profilePicture ?? '',
+      orElse: () => '',
+    );
+
     return Scaffold(
-      appBar: const UserAppBarWidget(
-        userName: 'test',
-        userId: '123123',
-        thumbnail: "https://indexcodex.com/api/v1/assets/userimage.png",
+      appBar: UserAppBarWidget(
+        userName: userName,
+        userId: userId,
+        profilePicture: profilePicture,
+        onLogout: () => widget.onLogout(),
       ),
       body: LayoutBuilder(
         builder: (context, constraint) {
-          if (loading) return const Center(child: CircularProgressIndicator());
+          if (loading) {
+            return const Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                Text(
+                  'Fetching Data',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ));
+          }
 
           return GridView.count(
             crossAxisCount: 2,
@@ -71,6 +97,7 @@ class _BrandsOverviewState extends State<BrandsOverview> {
                 margin: const EdgeInsets.all(24.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
+                  // TODO: create assets utility for this image
                   child: Image.asset('assets/images/visit.png'),
                 ),
               )

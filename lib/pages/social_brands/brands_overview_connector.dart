@@ -6,6 +6,7 @@ import 'package:socials_app_flutter/state/actions/actions.dart';
 import 'package:socials_app_flutter/state/app_state.dart';
 
 class BrandsOverviewConnector extends StatelessWidget {
+  static const String route = 'overview-page';
   const BrandsOverviewConnector({super.key});
 
   @override
@@ -15,6 +16,9 @@ class BrandsOverviewConnector extends StatelessWidget {
         onInitialBuild: (_, store, __) => store.dispatch(GetDataAction()),
         builder: (context, vm) => BrandsOverview(
           brandItemUiList: vm.brandItemUiList,
+          user: vm.user,
+          onLogout: vm.onLogout,
+          onNavigateToSocialBrandDetailsPage: vm.onNavigateToSocialBrandDetailsPage,
         ),
       );
 }

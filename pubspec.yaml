@@ -23,6 +23,8 @@ dependencies:
   json_annotation: ^4.9.0
   json_serializable: ^6.6.1
   webview_flutter: ^4.10.0
+  pinput: ^5.0.1
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_test:

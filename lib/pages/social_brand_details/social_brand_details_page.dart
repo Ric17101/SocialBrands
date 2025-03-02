@@ -3,8 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:socials_app_flutter/pages/social_brand_details/social_rand_webview.dart';
 import 'package:socials_app_flutter/state/models/social_brand_item_ui.dart';
 
-class SocialBrandDetails extends StatelessWidget {
-  const SocialBrandDetails({
+class SocialBrandDetailsArgs {
+  SocialBrandDetailsArgs({required this.itemUi});
+
+  final SocialBrandItemUi? itemUi;
+}
+
+class SocialBrandDetailsPage extends StatelessWidget {
+  static const String route = 'brand-details-page';
+
+  const SocialBrandDetailsPage({
     required this.itemUi,
     super.key,
   });
