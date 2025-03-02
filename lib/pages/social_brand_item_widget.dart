@@ -20,13 +20,16 @@ class SocialBrandItemWidget extends StatelessWidget {
     final networkImage = thumbnail != null
         ? CachedNetworkImage(
             imageUrl: thumbnail!,
-            imageBuilder: (context, imageProvider) => Container(
-              margin: const EdgeInsets.all(24.0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
+            imageBuilder: (context, imageProvider) => GestureDetector(
+              onTap: onTap,
+              child: Container(
+                margin: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

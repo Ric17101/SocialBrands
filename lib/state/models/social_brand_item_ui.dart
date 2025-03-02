@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'social_brand_item_ui.freezed.dart';
@@ -11,6 +12,7 @@ class SocialBrandItemUi with _$SocialBrandItemUi {
     @Default('') String iconUrl,
     @Default('') String imgUrl,
     @Default('') String webUrl,
+    Color? color,
   }) = _SocialBrandItemUi;
 
   const SocialBrandItemUi._();

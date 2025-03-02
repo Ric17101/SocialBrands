@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socials_app_flutter/pages/social_brand_details/social_brand_details.dart';
 import 'package:socials_app_flutter/pages/social_brand_item_widget.dart';
 import 'package:socials_app_flutter/pages/user_appbar_widget.dart';
 import 'package:socials_app_flutter/state/models/async_result.dart';
@@ -22,20 +23,19 @@ class _BrandsOverviewState extends State<BrandsOverview> {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Social Brand List';
-
     final items = widget.brandItemUiList.maybeWhen(
       success: (brandItems) =>
           brandItems
               ?.map((brandItem) => SocialBrandItemWidget(
                     thumbnail: brandItem.iconUrl,
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (BuildContext context) =>
-                      //           ProductDetailsConnector(productItem)),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              SocialBrandDetails(itemUi: brandItem),
+                        ),
+                      );
                     },
                   ))
               .toList() ??

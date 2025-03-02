@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter/material.dart';
 import 'package:socials_app_flutter/pages/social_brands/brands_overview_connector.dart';
 import 'package:socials_app_flutter/state/actions/actions.dart';
 import 'package:socials_app_flutter/state/app_state.dart';
@@ -17,11 +16,12 @@ class BrandsOverviewVmFactory
   AsyncResult<List<SocialBrandItemUi>> get _brandItemUiList {
     final brandList = state.data.brands
         .map((brand) => SocialBrandItemUi(
-              name: brand.name ?? '',
-              history: brand.history ?? '',
-              iconUrl: brand.iconUrl ?? '',
-              imgUrl: brand.imgUrl ?? '',
-              webUrl: brand.webUrl ?? '',
+              name: brand.name,
+              history: brand.history,
+              iconUrl: brand.iconUrl,
+              imgUrl: brand.imgUrl,
+              webUrl: brand.webUrl,
+              color: _brandColorMapper(brand.name),
             ))
         .toList();
 
@@ -38,6 +38,13 @@ class BrandsOverviewVmFactory
   static const _pageKeys = [
     GetDataAction.key,
   ];
+
+  Color? _brandColorMapper(String name) {
+    if (name.toLowerCase().contains("facebook")) return Colors.blue;
+    if (name.toLowerCase().contains("spotify")) return Colors.green;
+    if (name.toLowerCase().contains("youtube")) return Colors.red;
+    return Colors.white;
+  }
 }
 
 class BrandsOverviewVm extends Vm {

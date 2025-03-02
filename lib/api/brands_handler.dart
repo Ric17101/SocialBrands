@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:socials_app_flutter/api/models/data.dart';
 import 'package:socials_app_flutter/api/models/social_brand_model.dart';
 import 'package:socials_app_flutter/api/socialbrands_api_client.dart';
