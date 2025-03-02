@@ -12,16 +12,9 @@ class BrandsOverviewConnector extends StatelessWidget {
   Widget build(BuildContext context) =>
       StoreConnector<AppState, BrandsOverviewVm>(
         vm: () => BrandsOverviewVmFactory(),
-        // TODO: can be used when no need to access state
-        // E.g. run the dispatch action
-        // converter: (store) => ProductsOverviewVm(
-        //   loadMoreCallback: () {},
-        //   productItemUiList: const AsyncResult.success([]),
-        // ),
         onInitialBuild: (_, store, __) => store.dispatch(GetDataAction()),
         builder: (context, vm) => BrandsOverview(
           brandItemUiList: vm.brandItemUiList,
-          // loadMoreCallback: vm.loadMoreCallback,
         ),
       );
 }

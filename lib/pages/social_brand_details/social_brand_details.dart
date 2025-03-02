@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:socials_app_flutter/pages/social_brand_details/social_rand_webview.dart';
 import 'package:socials_app_flutter/state/models/social_brand_item_ui.dart';
 
 class SocialBrandDetails extends StatelessWidget {
@@ -65,7 +66,13 @@ class SocialBrandDetails extends StatelessWidget {
                 backgroundColor: itemUi.color ?? Colors.transparent,
               ),
               onPressed: () {
-                print('Button pressed');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        SocialBrandWebViewApp(itemUi: itemUi),
+                  ),
+                );
               },
               child: Text('Visit ${itemUi.name}'),
             ),

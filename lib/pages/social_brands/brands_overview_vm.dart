@@ -39,7 +39,7 @@ class BrandsOverviewVmFactory
     GetDataAction.key,
   ];
 
-  Color? _brandColorMapper(String name) {
+  Color _brandColorMapper(String name) {
     if (name.toLowerCase().contains("facebook")) return Colors.blue;
     if (name.toLowerCase().contains("spotify")) return Colors.green;
     if (name.toLowerCase().contains("youtube")) return Colors.red;

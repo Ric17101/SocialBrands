@@ -11,8 +11,12 @@ class SocialBrandsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => StoreProvider<AppState>(
         store: store,
-        child: const MaterialApp(
-          home: BrandsOverviewConnector(),
+        child: MaterialApp(
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white10),
+            useMaterial3: true,
+          ),
+          home: const BrandsOverviewConnector(),
         ),
       );
 }
