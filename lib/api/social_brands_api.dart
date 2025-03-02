@@ -1,5 +1,5 @@
 import 'package:socials_app_flutter/api/brands_handler.dart';
-import 'package:socials_app_flutter/api/social_brands_api_client.dart';
+import 'package:socials_app_flutter/api/socialbrands_api_client.dart';
 
 class SocialBrandsApi {
   SocialBrandsApi(ApiClient apiClient) {

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-List<SocialBrandModel> welcomeFromJson(String str) =>
+List<SocialBrandModel> brandListFromJson(String str) =>
     List<SocialBrandModel>.from(json.decode(str).map((x) => SocialBrandModel.fromJson(x)));
 
-String welcomeToJson(List<SocialBrandModel> data) =>
+String brandListToJson(List<SocialBrandModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class SocialBrandModel {

@@ -21,7 +21,7 @@ AppState _$AppStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppState {
   Data get data => throw _privateConstructorUsedError;
-  SocialBrandModel? get selectedProduct => throw _privateConstructorUsedError;
+  SocialBrandModel? get selectedBrand => throw _privateConstructorUsedError;
   UserModel? get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'wait', ignore: true)
   Wait get wait => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $AppStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Data data,
-      SocialBrandModel? selectedProduct,
+      SocialBrandModel? selectedBrand,
       UserModel? user,
       @JsonKey(name: 'wait', ignore: true) Wait wait});
 
@@ -66,7 +66,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @override
   $Res call({
     Object? data = null,
-    Object? selectedProduct = freezed,
+    Object? selectedBrand = freezed,
     Object? user = freezed,
     Object? wait = null,
   }) {
@@ -75,9 +75,9 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Data,
-      selectedProduct: freezed == selectedProduct
-          ? _value.selectedProduct
-          : selectedProduct // ignore: cast_nullable_to_non_nullable
+      selectedBrand: freezed == selectedBrand
+          ? _value.selectedBrand
+          : selectedBrand // ignore: cast_nullable_to_non_nullable
               as SocialBrandModel?,
       user: freezed == user
           ? _value.user
@@ -111,7 +111,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Data data,
-      SocialBrandModel? selectedProduct,
+      SocialBrandModel? selectedBrand,
       UserModel? user,
       @JsonKey(name: 'wait', ignore: true) Wait wait});
 
@@ -133,7 +133,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? selectedProduct = freezed,
+    Object? selectedBrand = freezed,
     Object? user = freezed,
     Object? wait = null,
   }) {
@@ -142,9 +142,9 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Data,
-      selectedProduct: freezed == selectedProduct
-          ? _value.selectedProduct
-          : selectedProduct // ignore: cast_nullable_to_non_nullable
+      selectedBrand: freezed == selectedBrand
+          ? _value.selectedBrand
+          : selectedBrand // ignore: cast_nullable_to_non_nullable
               as SocialBrandModel?,
       user: freezed == user
           ? _value.user
@@ -163,7 +163,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
 class _$AppStateImpl implements _AppState {
   const _$AppStateImpl(
       {this.data = const Data(),
-      this.selectedProduct,
+      this.selectedBrand,
       this.user,
       @JsonKey(name: 'wait', ignore: true) this.wait = Wait.empty});
 
@@ -174,7 +174,7 @@ class _$AppStateImpl implements _AppState {
   @JsonKey()
   final Data data;
   @override
-  final SocialBrandModel? selectedProduct;
+  final SocialBrandModel? selectedBrand;
   @override
   final UserModel? user;
   @override
@@ -183,7 +183,7 @@ class _$AppStateImpl implements _AppState {
 
   @override
   String toString() {
-    return 'AppState(data: $data, selectedProduct: $selectedProduct, user: $user, wait: $wait)';
+    return 'AppState(data: $data, selectedBrand: $selectedBrand, user: $user, wait: $wait)';
   }
 
   @override
@@ -192,16 +192,15 @@ class _$AppStateImpl implements _AppState {
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&
             (identical(other.data, data) || other.data == data) &&
-            (identical(other.selectedProduct, selectedProduct) ||
-                other.selectedProduct == selectedProduct) &&
+            (identical(other.selectedBrand, selectedBrand) ||
+                other.selectedBrand == selectedBrand) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.wait, wait) || other.wait == wait));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, selectedProduct, user, wait);
+  int get hashCode => Object.hash(runtimeType, data, selectedBrand, user, wait);
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
@@ -222,7 +221,7 @@ class _$AppStateImpl implements _AppState {
 abstract class _AppState implements AppState {
   const factory _AppState(
       {final Data data,
-      final SocialBrandModel? selectedProduct,
+      final SocialBrandModel? selectedBrand,
       final UserModel? user,
       @JsonKey(name: 'wait', ignore: true) final Wait wait}) = _$AppStateImpl;
 
@@ -232,7 +231,7 @@ abstract class _AppState implements AppState {
   @override
   Data get data;
   @override
-  SocialBrandModel? get selectedProduct;
+  SocialBrandModel? get selectedBrand;
   @override
   UserModel? get user;
   @override

@@ -19,8 +19,8 @@ class ApiClient {
         QueuedInterceptorsWrapper(
           onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
             options.headers = <String, dynamic>{
-              // 'Accept': 'application/json',
-              // 'content-type': 'application/json',
+              'Accept': 'application/json',
+              'content-type': 'application/json',
               'CLIENT_ID': 'rgbexam',
             };
             handler.next(options);

@@ -7,5 +7,5 @@ final getIt = GetIt.instance;
 
 void main() {
   getIt.registerLazySingleton<ApiService>(() => ApiService());
-  runApp(const SocialBrandsApp());
+  runApp(SocialBrandsApp());
 }
