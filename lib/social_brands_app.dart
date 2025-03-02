@@ -1,6 +1,6 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:socials_app_flutter/pages/social_brands/brands_overview_connector.dart';
+import 'package:socials_app_flutter/pages/login/login_page.dart';
 import 'package:socials_app_flutter/state/app_state.dart';
 
 class SocialBrandsApp extends StatelessWidget {
@@ -16,7 +16,7 @@ class SocialBrandsApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white10),
             useMaterial3: true,
           ),
-          home: const BrandsOverviewConnector(),
+          home: const LoginPage(),
         ),
       );
 }

@@ -69,7 +69,10 @@ class _BrandsOverviewState extends State<BrandsOverview> {
               ...items,
               Container(
                 margin: const EdgeInsets.all(24.0),
-                child: Image.asset('assets/images/visit.png'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset('assets/images/visit.png'),
+                ),
               )
             ],
           );
