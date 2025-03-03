@@ -1,6 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:socials_app_flutter/pages/login/login_page_connector.dart';
+import 'package:socials_app_flutter/pages/others/other_pages.dart';
 import 'package:socials_app_flutter/state/app_state.dart';
 import 'package:socials_app_flutter/utilities/app_router.dart';
 
@@ -15,7 +16,11 @@ class SocialBrandsApp extends StatelessWidget {
         store: store,
         child: MaterialApp(
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white10),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.white,
+              primary: Colors.green,
+              secondary: Colors.blue,
+            ),
             useMaterial3: true,
           ),
           home: PopScope(
@@ -33,6 +38,7 @@ class SocialBrandsApp extends StatelessWidget {
             child: Navigator(
               key: navigatorKey,
               initialRoute: LoginPageConnector.route,
+              // initialRoute: OtherPages.route,
               onGenerateRoute: AppRouter().generateRoute,
             ),
           ),

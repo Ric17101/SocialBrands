@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:socials_app_flutter/state/models/social_brand_item_ui.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class SocialBrandWebViewApp extends StatefulWidget {
-  const SocialBrandWebViewApp({
+class SocialBrandWebView extends StatefulWidget {
+  const SocialBrandWebView({
     required this.itemUi,
     super.key,
   });
@@ -11,10 +11,10 @@ class SocialBrandWebViewApp extends StatefulWidget {
   final SocialBrandItemUi itemUi;
 
   @override
-  State<SocialBrandWebViewApp> createState() => _SocialBrandWebViewAppState();
+  State<SocialBrandWebView> createState() => _SocialBrandWebViewState();
 }
 
-class _SocialBrandWebViewAppState extends State<SocialBrandWebViewApp> {
+class _SocialBrandWebViewState extends State<SocialBrandWebView> {
   bool isLoading = true;
   late final WebViewController controller;
 

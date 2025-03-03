@@ -8,6 +8,7 @@ import 'package:socials_app_flutter/state/app_state.dart';
 import 'package:socials_app_flutter/state/models/async_result.dart';
 import 'package:socials_app_flutter/state/models/social_brand_item_ui.dart';
 import 'package:socials_app_flutter/state/models/user_detail_ui.dart';
+import 'package:socials_app_flutter/utilities/asset_images.dart';
 
 class BrandsOverviewVmFactory
     extends VmFactory<AppState, BrandsOverviewConnector> {
@@ -33,16 +34,25 @@ class BrandsOverviewVmFactory
   }
 
   AsyncResult<List<SocialBrandItemUi>> get _brandItemUiList {
-    final brandList = state.data.brands
-        .map((brand) => SocialBrandItemUi(
-              name: brand.name,
-              history: brand.history,
-              iconUrl: brand.iconUrl,
-              imgUrl: brand.imgUrl,
-              webUrl: brand.webUrl,
-              color: _brandColorMapper(brand.name),
-            ))
-        .toList();
+    final brandList = [
+      ...state.data.brands.map(
+        (brand) => SocialBrandItemUi(
+          name: brand.name,
+          history: brand.history,
+          iconUrl: brand.iconUrl,
+          imgUrl: brand.imgUrl,
+          webUrl: brand.webUrl,
+          color: _brandColorMapper(brand.name),
+          image: AssetImages.getAssetIcon(brand.name.toLowerCase()),
+        ),
+      ),
+      // TODO: check if this is needed
+      // SocialBrandItemUi(
+      //   name: 'Others',
+      //   color: Colors.yellow[700],
+      //   image: AssetImages.others,
+      // ),
+    ];
 
     if (isPageLoading(_pageKeys)) return AsyncResult.loading(brandList);
 

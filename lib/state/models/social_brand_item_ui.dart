@@ -13,6 +13,7 @@ class SocialBrandItemUi with _$SocialBrandItemUi {
     @Default('') String imgUrl,
     @Default('') String webUrl,
     Color? color,
+    Image? image,
   }) = _SocialBrandItemUi;
 
   const SocialBrandItemUi._();

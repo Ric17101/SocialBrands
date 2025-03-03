@@ -23,6 +23,7 @@ mixin _$SocialBrandItemUi {
   String get imgUrl => throw _privateConstructorUsedError;
   String get webUrl => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
+  Image? get image => throw _privateConstructorUsedError;
 
   /// Create a copy of SocialBrandItemUi
   /// with the given fields replaced by the non-null parameter values.
@@ -44,7 +45,8 @@ abstract class $SocialBrandItemUiCopyWith<$Res> {
       String iconUrl,
       String imgUrl,
       String webUrl,
-      Color? color});
+      Color? color,
+      Image? image});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$SocialBrandItemUiCopyWithImpl<$Res, $Val extends SocialBrandItemUi>
     Object? imgUrl = null,
     Object? webUrl = null,
     Object? color = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -99,6 +102,10 @@ class _$SocialBrandItemUiCopyWithImpl<$Res, $Val extends SocialBrandItemUi>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as Image?,
     ) as $Val);
   }
 }
@@ -118,7 +125,8 @@ abstract class _$$SocialBrandItemUiImplCopyWith<$Res>
       String iconUrl,
       String imgUrl,
       String webUrl,
-      Color? color});
+      Color? color,
+      Image? image});
 }
 
 /// @nodoc
@@ -141,6 +149,7 @@ class __$$SocialBrandItemUiImplCopyWithImpl<$Res>
     Object? imgUrl = null,
     Object? webUrl = null,
     Object? color = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$SocialBrandItemUiImpl(
       id: freezed == id
@@ -171,6 +180,10 @@ class __$$SocialBrandItemUiImplCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as Image?,
     ));
   }
 }
@@ -185,7 +198,8 @@ class _$SocialBrandItemUiImpl extends _SocialBrandItemUi {
       this.iconUrl = '',
       this.imgUrl = '',
       this.webUrl = '',
-      this.color})
+      this.color,
+      this.image})
       : super._();
 
   @override
@@ -207,10 +221,12 @@ class _$SocialBrandItemUiImpl extends _SocialBrandItemUi {
   final String webUrl;
   @override
   final Color? color;
+  @override
+  final Image? image;
 
   @override
   String toString() {
-    return 'SocialBrandItemUi(id: $id, name: $name, history: $history, iconUrl: $iconUrl, imgUrl: $imgUrl, webUrl: $webUrl, color: $color)';
+    return 'SocialBrandItemUi(id: $id, name: $name, history: $history, iconUrl: $iconUrl, imgUrl: $imgUrl, webUrl: $webUrl, color: $color, image: $image)';
   }
 
   @override
@@ -224,12 +240,13 @@ class _$SocialBrandItemUiImpl extends _SocialBrandItemUi {
             (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl) &&
             (identical(other.webUrl, webUrl) || other.webUrl == webUrl) &&
-            (identical(other.color, color) || other.color == color));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, history, iconUrl, imgUrl, webUrl, color);
+      runtimeType, id, name, history, iconUrl, imgUrl, webUrl, color, image);
 
   /// Create a copy of SocialBrandItemUi
   /// with the given fields replaced by the non-null parameter values.
@@ -249,7 +266,8 @@ abstract class _SocialBrandItemUi extends SocialBrandItemUi {
       final String iconUrl,
       final String imgUrl,
       final String webUrl,
-      final Color? color}) = _$SocialBrandItemUiImpl;
+      final Color? color,
+      final Image? image}) = _$SocialBrandItemUiImpl;
   const _SocialBrandItemUi._() : super._();
 
   @override
@@ -266,6 +284,8 @@ abstract class _SocialBrandItemUi extends SocialBrandItemUi {
   String get webUrl;
   @override
   Color? get color;
+  @override
+  Image? get image;
 
   /// Create a copy of SocialBrandItemUi
   /// with the given fields replaced by the non-null parameter values.

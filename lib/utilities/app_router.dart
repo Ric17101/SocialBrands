@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socials_app_flutter/pages/login/login_page_connector.dart';
+import 'package:socials_app_flutter/pages/others/other_pages.dart';
 import 'package:socials_app_flutter/pages/social_brand_details/social_brand_details_page.dart';
 import 'package:socials_app_flutter/pages/social_brands/brands_overview_connector.dart';
 import 'package:socials_app_flutter/social_brands_app.dart';
@@ -30,6 +31,14 @@ class AppRouter {
             itemUi: args.itemUi ?? const SocialBrandItemUi(),
           ),
         );
+      case OtherPages.route:
+        final OtherPagesArgs args = arguments is OtherPagesArgs
+            ? arguments
+            : OtherPagesArgs(itemUi: null);
+        return MaterialPageRoute<void>(
+            builder: (_) => OtherPages(
+                  itemUi: args.itemUi ?? const SocialBrandItemUi(),
+                ));
       default:
         return MaterialPageRoute<void>(
           builder: (_) => Scaffold(

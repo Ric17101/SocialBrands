@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:socials_app_flutter/pages/others/other_pages.dart';
 import 'package:socials_app_flutter/pages/social_brand_item_widget.dart';
 import 'package:socials_app_flutter/pages/user_appbar_widget.dart';
 import 'package:socials_app_flutter/state/models/async_result.dart';
 import 'package:socials_app_flutter/state/models/social_brand_item_ui.dart';
 import 'package:socials_app_flutter/state/models/user_detail_ui.dart';
+import 'package:socials_app_flutter/utilities/asset_images.dart';
 
 class BrandsOverview extends StatefulWidget {
   const BrandsOverview({
@@ -93,12 +95,27 @@ class _BrandsOverviewState extends State<BrandsOverview> {
             ),
             children: <Widget>[
               ...items,
-              Container(
-                margin: const EdgeInsets.all(24.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  // TODO: create assets utility for this image
-                  child: Image.asset('assets/images/visit.png'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => OtherPages(
+                        itemUi: SocialBrandItemUi(
+                          name: 'Others',
+                          color: Colors.yellow[700],
+                          image: AssetImages.others,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(24.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: AssetImages.others,
+                  ),
                 ),
               )
             ],

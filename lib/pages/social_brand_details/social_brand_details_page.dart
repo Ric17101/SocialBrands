@@ -78,7 +78,7 @@ class SocialBrandDetailsPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) =>
-                        SocialBrandWebViewApp(itemUi: itemUi),
+                        SocialBrandWebView(itemUi: itemUi),
                   ),
                 );
               },

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:socials_app_flutter/api/models/user_model.dart';
+import 'package:socials_app_flutter/utilities/asset_images.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -72,12 +73,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final brands = [
-      Image.asset('assets/images/youtube.png'),
-      Image.asset('assets/images/spotify.png'),
-      Image.asset('assets/images/facebook.png'),
+      AssetImages.youtube,
+      AssetImages.spotify,
+      AssetImages.facebook,
     ];
 
     final size = MediaQuery.of(context).size;
+    final enableEnterButton = _controller.text.isNotEmpty;
 
     // TODO: handle error message
     return Material(
@@ -152,7 +154,10 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 40.0),
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      foregroundColor: Colors.grey[700],
+                      foregroundColor:
+                          enableEnterButton ? Colors.green : Colors.grey[700],
+                      backgroundColor:
+                          enableEnterButton ? Colors.green : Colors.grey[350],
                       minimumSize: const Size(88, 44),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16.0,
@@ -161,24 +166,33 @@ class _LoginPageState extends State<LoginPage> {
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(2.0)),
                       ),
-                      backgroundColor: Colors.grey[350],
-                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color:
+                            enableEnterButton ? Colors.green : Colors.grey[700],
+                      ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _controller.text.isEmpty
-                            ? _validate = true
-                            : _validate = false;
-                      });
+                    onPressed: enableEnterButton
+                        ? () {
+                            setState(() {
+                              _controller.text.isEmpty
+                                  ? _validate = true
+                                  : _validate = false;
+                            });
 
-                      // TODO: TEST with validator
-                      _onLoginPressed();
+                            // TODO: TEST with validator
+                            _onLoginPressed();
 
-                      _showPinDialog(context);
-                    },
-                    child: const Text(
+                            _showPinDialog(context);
+                          }
+                        : null,
+                    child: Text(
                       'Enter',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            enableEnterButton ? Colors.white : Colors.grey[700],
+                      ),
                     ),
                   ),
                 ),
