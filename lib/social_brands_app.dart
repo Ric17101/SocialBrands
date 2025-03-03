@@ -18,7 +18,7 @@ class SocialBrandsApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.white,
-              primary: Colors.green,
+              primary: Colors.blue,
               secondary: Colors.blue,
             ),
             useMaterial3: true,
