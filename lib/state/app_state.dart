@@ -3,6 +3,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:socials_app_flutter/api/models/social_brand_model.dart';
 import 'package:socials_app_flutter/api/models/user_model.dart';
+import 'package:socials_app_flutter/utilities/dialog_handler.dart';
 
 part 'app_state.freezed.dart';
 
@@ -15,6 +16,7 @@ class AppState with _$AppState {
     SocialBrandModel? selectedBrand,
     UserModel? user,
     @Default(Wait.empty) @JsonKey(name: 'wait', ignore: true) Wait wait,
+    @JsonKey(ignore: true) Event<DialogHandler>? dialogEvent,
   }) = _AppState;
 
   factory AppState.fromJson(Map<String, dynamic> json) =>

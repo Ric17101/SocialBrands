@@ -5,6 +5,7 @@ import 'package:socials_app_flutter/state/actions/actions.dart';
 import 'package:socials_app_flutter/state/app_state.dart';
 import 'package:socials_app_flutter/state/models/async_result.dart';
 import 'package:socials_app_flutter/state/models/user_detail_ui.dart';
+import 'package:socials_app_flutter/utilities/dialog_handler.dart';
 
 class LoginPageVmFactory extends VmFactory<AppState, BrandsOverviewConnector> {
   @override
@@ -14,6 +15,7 @@ class LoginPageVmFactory extends VmFactory<AppState, BrandsOverviewConnector> {
         isLoading: _isPageLoading(),
         isLoggedIn: state.user != null,
         user: state.user,
+        dialogEvent: state.dialogEvent,
       );
 
   AsyncResult<UserDetailUi> get _userDetailUi {
@@ -28,6 +30,21 @@ class LoginPageVmFactory extends VmFactory<AppState, BrandsOverviewConnector> {
 
     return AsyncResult.success(user);
   }
+
+  // void _onSetDialogEventAction() {
+  //   final context = navigatorKey.currentContext;
+  //   dispatch(
+  //     SetDialogEventAction(
+  //       SimpleDialogHandler(
+  //         headerText: 'global_completeProcess_button'.localized,
+  //         descriptionText: 'touroverview_completetour_copytext'.localized,
+  //         confirmText: 'touriverview_completetour_header'.localized,
+  //         cancelText: 'global_cancel'.localized,
+  //         onTap: _onSetTourCompleted,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   bool _isPageLoading() => _isWaitingForKeys();
 
@@ -50,11 +67,19 @@ class LoginPageVm extends Vm {
     required this.isLoading,
     required this.isLoggedIn,
     required this.user,
-  }) : super(equals: [userDetailUi, isLoading, isLoggedIn, user]);
+    required this.dialogEvent,
+  }) : super(equals: [
+          userDetailUi,
+          isLoading,
+          isLoggedIn,
+          user,
+          dialogEvent,
+        ]);
 
   final AsyncResult<UserDetailUi> userDetailUi;
   final Function(String? username, String? pin) onLogin;
   final bool isLoading;
   final bool isLoggedIn;
+  final Event<DialogHandler>? dialogEvent;
   final UserModel? user;
 }

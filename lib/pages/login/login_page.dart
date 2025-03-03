@@ -9,13 +9,11 @@ class LoginPage extends StatefulWidget {
     super.key,
     required this.onLogin,
     required this.isLoading,
-    required this.isLoggedIn,
     required this.user,
   });
 
   final Function(String? username, String? pin) onLogin;
   final bool isLoading;
-  final bool isLoggedIn;
   final UserModel? user;
 
   @override
@@ -201,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           if (widget.isLoading) ...[
             Container(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.white.withOpacity(0.8),
               height: size.height,
               child: const SizedBox(
                 height: 20.0,
@@ -210,9 +208,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const Text(
-              'Logging In',
-              style: TextStyle(fontSize: 16),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.only(top: 60.0),
+                child: const Text(
+                  'Logging In',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
             ),
           ],
         ],

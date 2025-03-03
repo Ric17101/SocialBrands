@@ -7,6 +7,8 @@ import 'package:socials_app_flutter/main.dart';
 import 'package:socials_app_flutter/pages/social_brands/brands_overview_connector.dart';
 import 'package:socials_app_flutter/state/app_state.dart';
 import 'package:socials_app_flutter/api/api_service.dart';
+import 'package:socials_app_flutter/utilities/dialog_handler.dart';
+import 'package:socials_app_flutter/utilities/simple_dialog_handler.dart';
 
 const String USER_PREFERENCES_KEY = 'user';
 
@@ -93,6 +95,8 @@ class LoginAction extends LoadingAction {
 
   @override
   Future<AppState> reduce() async {
+    // dispatch(SetShowErrorDialog(showErrorDialog: false));
+
     final user =
         await getIt<ApiService>().loginApi.loginApi.login(username, pin);
 
@@ -104,5 +108,36 @@ class LoginAction extends LoadingAction {
     store.dispatch(NavigateAction.pushNamed(BrandsOverviewConnector.route));
 
     return state.copyWith(user: user);
+  }
+
+  @override
+  Object? wrapError(dynamic error) {
+    dispatch(
+      SetDialogEventAction(
+        SimpleDialogHandler(
+          headerText: 'Error',
+          onTap: () {
+            // TODO: you can add actions here
+          },
+        ),
+      ),
+    );
+    return error;
+  }
+}
+
+/// Sets a DialogHandler passed in the constructor and updates the dialogEvent in the app state
+/// Then it is consumed in the following classes depending on what dialog to show
+class SetDialogEventAction extends ReduxAction<AppState> {
+  final DialogHandler? dialogHandler;
+
+  SetDialogEventAction(this.dialogHandler);
+
+  @override
+  AppState reduce() {
+    final dialogEvent = dialogHandler == null
+        ? Event<DialogHandler>.spent()
+        : Event<DialogHandler>(dialogHandler);
+    return state.copyWith(dialogEvent: dialogEvent);
   }
 }

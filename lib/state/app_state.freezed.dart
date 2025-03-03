@@ -25,6 +25,8 @@ mixin _$AppState {
   UserModel? get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'wait', ignore: true)
   Wait get wait => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  Event<DialogHandler>? get dialogEvent => throw _privateConstructorUsedError;
 
   /// Serializes this AppState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +47,8 @@ abstract class $AppStateCopyWith<$Res> {
       {Data data,
       SocialBrandModel? selectedBrand,
       UserModel? user,
-      @JsonKey(name: 'wait', ignore: true) Wait wait});
+      @JsonKey(name: 'wait', ignore: true) Wait wait,
+      @JsonKey(ignore: true) Event<DialogHandler>? dialogEvent});
 
   $DataCopyWith<$Res> get data;
 }
@@ -69,6 +72,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? selectedBrand = freezed,
     Object? user = freezed,
     Object? wait = null,
+    Object? dialogEvent = freezed,
   }) {
     return _then(_value.copyWith(
       data: null == data
@@ -87,6 +91,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.wait
           : wait // ignore: cast_nullable_to_non_nullable
               as Wait,
+      dialogEvent: freezed == dialogEvent
+          ? _value.dialogEvent
+          : dialogEvent // ignore: cast_nullable_to_non_nullable
+              as Event<DialogHandler>?,
     ) as $Val);
   }
 
@@ -113,7 +121,8 @@ abstract class _$$AppStateImplCopyWith<$Res>
       {Data data,
       SocialBrandModel? selectedBrand,
       UserModel? user,
-      @JsonKey(name: 'wait', ignore: true) Wait wait});
+      @JsonKey(name: 'wait', ignore: true) Wait wait,
+      @JsonKey(ignore: true) Event<DialogHandler>? dialogEvent});
 
   @override
   $DataCopyWith<$Res> get data;
@@ -136,6 +145,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
     Object? selectedBrand = freezed,
     Object? user = freezed,
     Object? wait = null,
+    Object? dialogEvent = freezed,
   }) {
     return _then(_$AppStateImpl(
       data: null == data
@@ -154,6 +164,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.wait
           : wait // ignore: cast_nullable_to_non_nullable
               as Wait,
+      dialogEvent: freezed == dialogEvent
+          ? _value.dialogEvent
+          : dialogEvent // ignore: cast_nullable_to_non_nullable
+              as Event<DialogHandler>?,
     ));
   }
 }
@@ -165,7 +179,8 @@ class _$AppStateImpl implements _AppState {
       {this.data = const Data(),
       this.selectedBrand,
       this.user,
-      @JsonKey(name: 'wait', ignore: true) this.wait = Wait.empty});
+      @JsonKey(name: 'wait', ignore: true) this.wait = Wait.empty,
+      @JsonKey(ignore: true) this.dialogEvent});
 
   factory _$AppStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppStateImplFromJson(json);
@@ -180,10 +195,13 @@ class _$AppStateImpl implements _AppState {
   @override
   @JsonKey(name: 'wait', ignore: true)
   final Wait wait;
+  @override
+  @JsonKey(ignore: true)
+  final Event<DialogHandler>? dialogEvent;
 
   @override
   String toString() {
-    return 'AppState(data: $data, selectedBrand: $selectedBrand, user: $user, wait: $wait)';
+    return 'AppState(data: $data, selectedBrand: $selectedBrand, user: $user, wait: $wait, dialogEvent: $dialogEvent)';
   }
 
   @override
@@ -195,12 +213,15 @@ class _$AppStateImpl implements _AppState {
             (identical(other.selectedBrand, selectedBrand) ||
                 other.selectedBrand == selectedBrand) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.wait, wait) || other.wait == wait));
+            (identical(other.wait, wait) || other.wait == wait) &&
+            (identical(other.dialogEvent, dialogEvent) ||
+                other.dialogEvent == dialogEvent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, data, selectedBrand, user, wait);
+  int get hashCode =>
+      Object.hash(runtimeType, data, selectedBrand, user, wait, dialogEvent);
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
@@ -220,10 +241,12 @@ class _$AppStateImpl implements _AppState {
 
 abstract class _AppState implements AppState {
   const factory _AppState(
-      {final Data data,
-      final SocialBrandModel? selectedBrand,
-      final UserModel? user,
-      @JsonKey(name: 'wait', ignore: true) final Wait wait}) = _$AppStateImpl;
+          {final Data data,
+          final SocialBrandModel? selectedBrand,
+          final UserModel? user,
+          @JsonKey(name: 'wait', ignore: true) final Wait wait,
+          @JsonKey(ignore: true) final Event<DialogHandler>? dialogEvent}) =
+      _$AppStateImpl;
 
   factory _AppState.fromJson(Map<String, dynamic> json) =
       _$AppStateImpl.fromJson;
@@ -237,6 +260,9 @@ abstract class _AppState implements AppState {
   @override
   @JsonKey(name: 'wait', ignore: true)
   Wait get wait;
+  @override
+  @JsonKey(ignore: true)
+  Event<DialogHandler>? get dialogEvent;
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
